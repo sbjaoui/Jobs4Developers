@@ -20,7 +20,7 @@ namespace Jobs4Developers.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MvcDevelopersConnection", throwIfV1Schema: false)
         {
         }
 
