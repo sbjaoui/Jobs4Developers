@@ -12,6 +12,7 @@ using Microsoft.Owin.Security;
 using Owin;
 using Jobs4Developers.Models;
 
+
 namespace Jobs4Developers.Controllers
 {
     [Authorize]
@@ -78,6 +79,7 @@ namespace Jobs4Developers.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+           
             return View();
         }
 
