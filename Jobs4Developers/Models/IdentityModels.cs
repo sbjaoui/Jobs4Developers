@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace Jobs4Developers.Models
 {
@@ -28,5 +29,10 @@ namespace Jobs4Developers.Models
         {
             return new ApplicationDbContext();
         }
+
+
+        public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<Offer> Offers { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
     }
 }

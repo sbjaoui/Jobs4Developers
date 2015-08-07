@@ -1,0 +1,89 @@
+﻿@using Jobs4Developers.Models
+@model Company
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img style="width:inherit; height:100px;" src="~/Content/Images/noUser.jpg" />
+        </div>
+
+    </div>
+    <div class="row">
+        <h2 class="bold">@Model.Name</h2>
+    </div>
+    <div class="row">
+        <h2 class="bold">Description</h2>
+        <hr />
+        <div class="col-md-9">
+            @Model.Description
+        </div>
+    </div>
+    <div class="row">
+        <h2 class="bold">Job offers</h2>
+        <hr />
+        
+          
+                @foreach (Offer h in Model.Offers)
+                {
+                    
+                        @h.Description
+                    
+
+
+                }
+            
+   
+
+        
+      
+        
+        @Html.ActionLink("Add new offer", "Add","Offer",  new { id = "addBtn" },null)
+       
+    </div>
+    <div class="row">
+        <h2 class="bold">Contact Us</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-1">
+                Adresse :&nbsp;
+            </div>
+            <div class="col">
+                @Model.Adresse
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                Email :&nbsp;
+            </div>
+            <div class="col">
+                @Model.Email
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                Phone :&nbsp;
+            </div>
+            <div class="col">
+                @Model.PhoneNumber
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $('#newOffer').click(function () {
+                    BootstrapDialog.alert('I want banana!');
+                });
+            });
+        </script>
+    }
+
+  
+
+

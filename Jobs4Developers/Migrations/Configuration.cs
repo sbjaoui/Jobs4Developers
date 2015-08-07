@@ -1,5 +1,8 @@
 namespace Jobs4Developers.Migrations
 {
+    using Jobs4Developers.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,18 +17,18 @@ namespace Jobs4Developers.Migrations
 
         protected override void Seed(Jobs4Developers.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+           //AddAdminUser(ApplicationDbContext context)
+        }
+        public void AddAdminUser(ApplicationDbContext context)
+        {
+            UserStore<ApplicationUser> userstore = new UserStore<ApplicationUser>(context);
+            UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(userstore);
+            if (!context.Users.Any(u => u.UserName == "admin@isi.com"))
+            {
+                ApplicationUser newUser = new ApplicationUser { Email = "admin@isi.com", UserName = "admin@isi.com" };
+                userManager.Create(newUser, "AAA111...");
+                userManager.AddToRole(newUser.Id, "Admin");
+            }
         }
     }
 }

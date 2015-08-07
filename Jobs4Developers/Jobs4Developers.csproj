@@ -159,7 +159,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,8 +169,27 @@
     <Compile Include="Migrations\201508050239412_Second connection.Designer.cs">
       <DependentUpon>201508050239412_Second connection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508062248509_test22.cs" />
+    <Compile Include="Migrations\201508062248509_test22.Designer.cs">
+      <DependentUpon>201508062248509_test22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508070321097_add offers.cs" />
+    <Compile Include="Migrations\201508070321097_add offers.Designer.cs">
+      <DependentUpon>201508070321097_add offers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508070515474_test1.cs" />
+    <Compile Include="Migrations\201508070515474_test1.Designer.cs">
+      <DependentUpon>201508070515474_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508070531420_test122.cs" />
+    <Compile Include="Migrations\201508070531420_test122.Designer.cs">
+      <DependentUpon>201508070531420_test122.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BLL\CompanyManager.cs" />
+    <Compile Include="Models\BLL\OfferManager.cs" />
+    <Compile Include="Models\Offer.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Developer.cs" />
     <Compile Include="Models\Education.cs" />
@@ -232,10 +253,11 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Offer\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\BLL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -247,6 +269,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201508050239412_Second connection.resx">
       <DependentUpon>201508050239412_Second connection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508062248509_test22.resx">
+      <DependentUpon>201508062248509_test22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508070321097_add offers.resx">
+      <DependentUpon>201508070321097_add offers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508070515474_test1.resx">
+      <DependentUpon>201508070515474_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508070531420_test122.resx">
+      <DependentUpon>201508070531420_test122.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

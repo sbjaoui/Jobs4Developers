@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -28,6 +29,9 @@ namespace Jobs4Developers.Models
         public string Adresse { get; set; }
         public string UrlLogo { get; set; }
         public virtual ICollection<Language> Languages { get; set; }
+
+
+        public virtual ICollection<Offer> Offers { get; set; }
 
     }
 }
