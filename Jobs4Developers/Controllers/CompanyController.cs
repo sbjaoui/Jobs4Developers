@@ -13,10 +13,49 @@ namespace Jobs4Developers.Controllers
         // GET: Company
         public ActionResult Index()
         {
-            Company MyCompany = CompanyManager.GetById(1);
-            ViewBag.ListOffres = OfferManager.getByIdCompany(MyCompany.Id);
-            return View(MyCompany);
+            Company myCompany = CompanyManager.GetById(1);
+            ViewBag.ListOffres = OfferManager.getByIdCompany(myCompany.Id);
+            return View(myCompany);
+        }
+        public ActionResult Edit(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return new HttpStatusCodeResult(403);
+            }
+            else
+            {
+                Company myCompany = CompanyManager.GetById(id.Value);
+                if (myCompany == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    ViewBag.ListOffres = OfferManager.getByIdCompany(id.Value);
+                    return View(myCompany);
+                }
+            }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Company myCompany)
+        {
+            var postData = Request.Form;
+
+            if (ModelState.IsValid)
+            {
+                CompanyManager.Edit(myCompany);
+                ModelState.Clear();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.ListOffres = OfferManager.getByIdCompany(myCompany.Id);
+
+                return View(myCompany);
+            }
+        }
     }
 }

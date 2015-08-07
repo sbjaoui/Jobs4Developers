@@ -10,7 +10,10 @@
         <div class="col-md-3">
             <img style="width:inherit; height:100px;" src="~/Content/Images/noUser.jpg" />
         </div>
-
+        <div class="col-md-3">
+         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        </div>
+        
     </div>
     <div class="row">
         <h2 class="bold">@Model.Name</h2>
@@ -22,27 +25,64 @@
             @Model.Description
         </div>
     </div>
+
+   
+    <div class="row">
+        <h2 class="bold">Languages</h2>
+        <hr />
+        <ul>
+            @if (Model.Languages != null && Model.Languages.Count != 0)
+            {
+                foreach (Language l in Model.Languages)
+                {
+                    <li>
+
+                        @l.Name
+
+
+                    </li>
+                }
+            }
+            else
+            {
+                <text>Please Edit your profile and choose your programming language</text>
+            }
+
+        </ul>
+
+        
+
+      
+
+    </div>
+
     <div class="row">
         <h2 class="bold">Job offers</h2>
         <hr />
         <ul>
-          
-                @foreach (Offer h in listOffres)
+            @if (listOffres != null && listOffres.Count != 0)
+            {
+                foreach (Offer h in listOffres)
                 {
-                <li>
+                    <li>
 
-                    @h.Description
+                        @h.Description
 
 
-                </li>
+                    </li>
                 }
-            
-        </ul>
-        
+            }
+            else
+            {
+                <text>Pas d'offre d'emplois pour l'instant </text>
+            }
 
-        
-        @Html.ActionLink("Add new offer", "Add","Offer",  new { id = "addBtn" },null)
-       
+        </ul>
+
+
+
+        @Html.ActionLink("Add new offer", "Add", "Offer", null)
+
     </div>
     <div class="row">
         <h2 class="bold">Contact Us</h2>
@@ -75,15 +115,8 @@
 
 </div>
 
-    @section scripts{
-        <script>
-            $(document).ready(function () {
-                $('#newOffer').click(function () {
-                    BootstrapDialog.alert('I want banana!');
-                });
-            });
-        </script>
-    }
+   
+    
 
   
 

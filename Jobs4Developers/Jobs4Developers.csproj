@@ -161,6 +161,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +189,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BLL\CompanyManager.cs" />
+    <Compile Include="Models\BLL\LanguageManager.cs" />
     <Compile Include="Models\BLL\OfferManager.cs" />
     <Compile Include="Models\Offer.cs" />
     <Compile Include="Models\Company.cs" />
@@ -195,6 +197,7 @@
     <Compile Include="Models\Education.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Language.cs" />
+    <Compile Include="Models\Utils\Utils.cs" />
     <Compile Include="Models\WorkExperience.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -255,6 +258,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Offer\Add.cshtml" />
+    <Content Include="Views\Language\Add.cshtml" />
+    <Content Include="Views\Company\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

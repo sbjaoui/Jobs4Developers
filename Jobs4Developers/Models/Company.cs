@@ -28,6 +28,8 @@ namespace Jobs4Developers.Models
         public string Email { get; set; }
         public string Adresse { get; set; }
         public string UrlLogo { get; set; }
+        [NotMapped]
+        public string LanguagesIds { get; set; }
         public virtual ICollection<Language> Languages { get; set; }
 
 

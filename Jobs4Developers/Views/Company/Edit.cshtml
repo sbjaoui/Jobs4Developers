@@ -1,0 +1,143 @@
+﻿@using Jobs4Developers.Models
+@using Jobs4Developers.Models.Utils
+  @model Company         
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i=0;
+    int j = 0;
+}
+
+<h2>Edit Company</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.Id)
+    @Html.HiddenFor(m=>m.LanguagesIds)
+    
+    <div class="form-horizontal">
+     
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adresse, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adresse, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Adresse, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UrlLogo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UrlLogo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UrlLogo, "", new { @class = "text-danger" })
+                
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Languages", new { @class = "control-label col-md-2" })
+           
+            @foreach (Jobs4Developers.Models.Language language in Jobs4Developers.Models.BLL.LanguageManager.GetAll())
+            {    i++; 
+                string chk = "";
+                if (Model != null && Model.LanguagesIds.ToListOfInt().Contains(language.Id))
+                {
+                    chk = "checked=\"checked\"";
+                }
+              
+                <input type="checkbox" name="chkLanguage" @chk value="@language.Id" /> @language.Name 
+               
+                 if(i%3==0)
+                 {<br />
+                     if (j == 0)
+                     {
+                         j++;
+
+                     }
+                     else {  @Html.Label("          ", new { @class = "control-label col-md-2" })} }
+                      
+
+            }
+            <br />
+            @Html.Label("          ", new { @class = "control-label col-md-2" })
+            @Html.ActionLink("Add new Language", "Add", "Language",null)
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('input[name="chkLanguage"]').click(function () {
+                var selectLanguageIds = $('input[name="chkLanguage"]:checked').map(function () {
+                    return this.value;
+               }).get().join(',');
+                //alert(selectHobbyIds);
+                $('#LanguagesIds').val(selectLanguageIds);
+            });
+        });
+
+    </script>
+}
