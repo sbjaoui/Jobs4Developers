@@ -6,113 +6,196 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <img style="width:inherit; height:100px;" src="~/Content/Images/noUser.jpg" />
+    @* A bit about me. *@
+    <div class="row ">
+        <div class="col-md-10 ">
+
+            <h2>My Company</h2>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <img style="width:inherit; height:150px;" src="~/Content/Images/noUser.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 ">
+                    <div class="row">
+                        <div class="col-md-12"> <b>@Model.Name</b>  </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">@Model.Description</div>
+                        <div class="col-md-12">
+                            @Html.ActionLink("Edit My Profil", "Edit", new { id = Model.Id }) |
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        <div class="col-md-2" style="margin-top:5.8%;">
+            <div class="row">
+
+                <b>Contact me</b>
+
+            </div>
+
+            <div class="row">
+                <span style="color:#B15315; margin:8px;">Email:</span><span>@Model.Email</span>
+            </div>
+            <div class="row">
+                <span style="color:#B15315;margin:8px;">Cell:</span><span>@Model.PhoneNumber</span>
+
+            </div>
+            <div class="row">
+                <span style="color:#B15315;margin:8px;">Adresse:</span><span>@Model.Adresse </span>
+            </div>
         </div>
-        
-    </div>
-    <div class="row">
-        <h2 class="bold">@Model.Name</h2>
-    </div>
-    <div class="row">
-        <h2 class="bold">Description</h2>
-        <hr />
-        <div class="col-md-9">
-            @Model.Description
-        </div>
+
     </div>
 
-   
-    <div class="row">
-        <h2 class="bold">Languages</h2>
-        <hr />
-        <ul>
-            @if (Model.Languages != null && Model.Languages.Count != 0)
-            {
-                foreach (Language l in Model.Languages)
+    @* Resume *@
+    <div class="row ">
+        <div class="col-md-10 ">
+            @* Column1 *@
+            <h2> Resume.</h2>
+            <hr />
+            @* Professional info *@
+            <div class="row" style="height:200px;">
+
+                <div class="col-md-4 ">
+
+                    <div class="row" style="vertical-align:central;">
+
+                        <div class="col-md-offset-2 col-md-8" style="height:150px; background-color:#E83556;  ">
+
+                            <h4 style="
+text-align: center; vertical-align: middle; line-height: 145px;">
+                                <b> Jobs Offer</b>
+                            </h4>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8 style=" height:200px;">
+                   
+                        <ul style ="
+text-align: center; vertical-align: middle;">
+                            @if (listOffres != null && listOffres.Count != 0)
+                            {
+                                foreach (Offer h in listOffres)
+                                {
+                                    <li>
+
+                                        @h.Description
+
+
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <text>Pas d'offre d'emplois pour l'instant </text>
+                            }
+
+                        </ul>
+
+                   
+                </div>
+            </div>
+
+            @* WORK EXPERIENCE *@
+            <div class="row">
+                <div class="col-md-4 ">
+                    <div class="row" style="vertical-align:central;">
+
+                        <div class="col-md-offset-2 col-md-8" style="height:150px; background-color:#D9534F;  ">
+                            <h4 style="
+text-align: center; vertical-align: middle; line-height: 145px;">
+                                <b>Language used</b>
+                            </h4>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8 ">
+                   
+                    <div class="row">
+                     
+                        <ul>
+                            @if (Model.Languages != null && Model.Languages.Count != 0)
+                            {
+                                foreach (Language l in Model.Languages)
+                                {
+                                    <li>
+
+                                        @l.Name
+
+
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <text>Please Edit your profile and choose your programming language</text>
+                            }
+
+                        </ul>
+
+
+
+
+
+                    </div>
+            </div>
+
+          
+        @* Column2 *@
+    
+    </div>
+
+    @* Contact *@
+    <div class="row ">
+        <div class="col-md-12 ">
+            <h2>Contact.</h2>
+            <hr />
+            <div class="row">
+
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal col-md-offset-2 ", role = "form" }))
                 {
-                    <li>
+                    <div class="form-group">
+                        <div class="col-md-1 col-md-offset-3">
+                            <label for="inputEmail" class="control-label">Subject</label>
+                        </div>
 
-                        @l.Name
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                    </div>
 
 
-                    </li>
+                    <div class="form-group">
+                        <div class="col-md-1 col-md-offset-3">
+                            <label for="textArea" class="control-label">Message</label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea class="form-control" rows="3" id="textArea" placeholder="Put your message here"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <input type="submit" value="Send" class="btn btn-primary col-md-8" />
+                        </div>
+
+                    </div>
                 }
-            }
-            else
-            {
-                <text>Please Edit your profile and choose your programming language</text>
-            }
-
-        </ul>
-
-        
-
-      
-
-    </div>
-
-    <div class="row">
-        <h2 class="bold">Job offers</h2>
-        <hr />
-        <ul>
-            @if (listOffres != null && listOffres.Count != 0)
-            {
-                foreach (Offer h in listOffres)
-                {
-                    <li>
-
-                        @h.Description
 
 
-                    </li>
-                }
-            }
-            else
-            {
-                <text>Pas d'offre d'emplois pour l'instant </text>
-            }
-
-        </ul>
-
-
-
-        @Html.ActionLink("Add new offer", "Add", "Offer", null)
-
-    </div>
-    <div class="row">
-        <h2 class="bold">Contact Us</h2>
-        <hr />
-        <div class="row">
-            <div class="col-md-1">
-                Adresse :&nbsp;
-            </div>
-            <div class="col">
-                @Model.Adresse
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                Email :&nbsp;
-            </div>
-            <div class="col">
-                @Model.Email
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                Phone :&nbsp;
-            </div>
-            <div class="col">
-                @Model.PhoneNumber
             </div>
         </div>
     </div>
-
 </div>
 
    

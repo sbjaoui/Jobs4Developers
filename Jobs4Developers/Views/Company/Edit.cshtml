@@ -113,7 +113,7 @@
             }
             <br />
             @Html.Label("          ", new { @class = "control-label col-md-2" })
-            @Html.ActionLink("Add new Language", "Add", "Language",null)
+            @Html.ActionLink("Add new Language", "Add", "Language", new { id=@Model.Id}, null)
         </div>
 
         <div class="form-group">
