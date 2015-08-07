@@ -2,6 +2,7 @@
 @model Company
 @{
     ViewBag.Title = "Index";
+    ICollection<Offer> listOffres = ViewBag.ListOffres as ICollection<Offer>;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
@@ -24,21 +25,21 @@
     <div class="row">
         <h2 class="bold">Job offers</h2>
         <hr />
-        
+        <ul>
           
-                @foreach (Offer h in Model.Offers)
+                @foreach (Offer h in listOffres)
                 {
-                    
-                        @h.Description
-                    
+                <li>
+
+                    @h.Description
 
 
+                </li>
                 }
             
-   
-
+        </ul>
         
-      
+
         
         @Html.ActionLink("Add new offer", "Add","Offer",  new { id = "addBtn" },null)
        

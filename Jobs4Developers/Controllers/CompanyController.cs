@@ -14,7 +14,7 @@ namespace Jobs4Developers.Controllers
         public ActionResult Index()
         {
             Company MyCompany = CompanyManager.GetById(1);
-            MyCompany.Offers = OfferManager.getByIdCompany(MyCompany.Id);
+            ViewBag.ListOffres = OfferManager.getByIdCompany(MyCompany.Id);
             return View(MyCompany);
         }
 
