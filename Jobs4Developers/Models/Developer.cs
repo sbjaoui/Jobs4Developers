@@ -32,8 +32,8 @@ namespace Jobs4Developers.Models
         public virtual ICollection<Language> Languages { get; set; }    
         public virtual ICollection<Education> Educations { get; set; }
 
-         public string UserIdd { get; set; }
-         [ForeignKey("UserIdd")]
+         public string UserId { get; set; }
+         [ForeignKey("UserId")]
          public virtual ApplicationUser User { get; set; }
     }
 }

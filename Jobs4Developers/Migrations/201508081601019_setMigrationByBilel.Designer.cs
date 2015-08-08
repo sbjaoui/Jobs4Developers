@@ -7,13 +7,13 @@ namespace Jobs4Developers.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class Secondconnection : IMigrationMetadata
+    public sealed partial class setMigrationByBilel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Secondconnection));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(setMigrationByBilel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201508050239412_Second connection"; }
+            get { return "201508081601019_setMigrationByBilel"; }
         }
         
         string IMigrationMetadata.Source

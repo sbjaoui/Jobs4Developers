@@ -166,25 +166,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508050239412_Second connection.cs" />
-    <Compile Include="Migrations\201508050239412_Second connection.Designer.cs">
-      <DependentUpon>201508050239412_Second connection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508062248509_test22.cs" />
-    <Compile Include="Migrations\201508062248509_test22.Designer.cs">
-      <DependentUpon>201508062248509_test22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508070321097_add offers.cs" />
-    <Compile Include="Migrations\201508070321097_add offers.Designer.cs">
-      <DependentUpon>201508070321097_add offers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508070515474_test1.cs" />
-    <Compile Include="Migrations\201508070515474_test1.Designer.cs">
-      <DependentUpon>201508070515474_test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508070531420_test122.cs" />
-    <Compile Include="Migrations\201508070531420_test122.Designer.cs">
-      <DependentUpon>201508070531420_test122.cs</DependentUpon>
+    <Compile Include="Migrations\201508081601019_setMigrationByBilel.cs" />
+    <Compile Include="Migrations\201508081601019_setMigrationByBilel.Designer.cs">
+      <DependentUpon>201508081601019_setMigrationByBilel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -272,20 +256,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508050239412_Second connection.resx">
-      <DependentUpon>201508050239412_Second connection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508062248509_test22.resx">
-      <DependentUpon>201508062248509_test22.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508070321097_add offers.resx">
-      <DependentUpon>201508070321097_add offers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508070515474_test1.resx">
-      <DependentUpon>201508070515474_test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508070531420_test122.resx">
-      <DependentUpon>201508070531420_test122.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508081601019_setMigrationByBilel.resx">
+      <DependentUpon>201508081601019_setMigrationByBilel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
