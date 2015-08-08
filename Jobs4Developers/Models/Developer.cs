@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -27,8 +28,12 @@ namespace Jobs4Developers.Models
         public string Email { get; set; }
         public string Adresse { get; set; }
         public string UrlImg { get; set; }
-        public virtual ICollection<Developer> Developers { get; set; }
+       
         public virtual ICollection<Language> Languages { get; set; }    
         public virtual ICollection<Education> Educations { get; set; }
+
+         public string UserIdd { get; set; }
+         [ForeignKey("UserIdd")]
+         public virtual ApplicationUser User { get; set; }
     }
 }

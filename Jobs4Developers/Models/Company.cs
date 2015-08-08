@@ -35,5 +35,9 @@ namespace Jobs4Developers.Models
 
         public virtual ICollection<Offer> Offers { get; set; }
 
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser User { get; set; }
+
     }
 }

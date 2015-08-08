@@ -13,6 +13,17 @@ namespace Jobs4Developers.Controllers
             return View();
         }
 
+        [Authorize]
+
+        public ActionResult Start()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                RedirectToAction("Login", "Account");
+            }
+            return View("About");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -20,11 +31,6 @@ namespace Jobs4Developers.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+       
     }
 }
