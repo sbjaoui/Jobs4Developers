@@ -4,6 +4,7 @@ namespace Jobs4Developers.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -17,17 +18,21 @@ namespace Jobs4Developers.Migrations
 
         protected override void Seed(Jobs4Developers.Models.ApplicationDbContext context)
         {
-           //AddAdminUser(ApplicationDbContext context)
+            AddSomeRoles(context);
         }
-        public void AddAdminUser(ApplicationDbContext context)
+
+
+        public void AddSomeRoles(Jobs4Developers.Models.ApplicationDbContext context)
         {
-            UserStore<ApplicationUser> userstore = new UserStore<ApplicationUser>(context);
-            UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(userstore);
-            if (!context.Users.Any(u => u.UserName == "admin@isi.com"))
+            List<IdentityRole> roles = new List<IdentityRole>
             {
-                ApplicationUser newUser = new ApplicationUser { Email = "admin@isi.com", UserName = "admin@isi.com" };
-                userManager.Create(newUser, "AAA111...");
-                userManager.AddToRole(newUser.Id, "Admin");
+                new IdentityRole{Name="Developer"},
+                new IdentityRole{Name="Entreprise"},
+            };
+
+            foreach (IdentityRole role in roles)
+            {
+                context.Roles.AddOrUpdate(r => r.Name, role);
             }
         }
     }
