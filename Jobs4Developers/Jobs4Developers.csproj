@@ -160,21 +160,29 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\DeveloperController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
+    <Compile Include="Controllers\WorkExeprienceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508081601019_setMigrationByBilel.cs" />
-    <Compile Include="Migrations\201508081601019_setMigrationByBilel.Designer.cs">
-      <DependentUpon>201508081601019_setMigrationByBilel.cs</DependentUpon>
+    <Compile Include="Migrations\201508091958246_MigrationGo.cs" />
+    <Compile Include="Migrations\201508091958246_MigrationGo.Designer.cs">
+      <DependentUpon>201508091958246_MigrationGo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508092009410_MigrationGoGo.cs" />
+    <Compile Include="Migrations\201508092009410_MigrationGoGo.Designer.cs">
+      <DependentUpon>201508092009410_MigrationGoGo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BLL\CompanyManager.cs" />
+    <Compile Include="Models\BLL\DeveloperManager.cs" />
     <Compile Include="Models\BLL\LanguageManager.cs" />
     <Compile Include="Models\BLL\OfferManager.cs" />
+    <Compile Include="Models\BLL\WorkExperienceManager.cs" />
     <Compile Include="Models\Offer.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Developer.cs" />
@@ -188,7 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap-default.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\noUser.jpg" />
@@ -221,7 +228,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Developer\PortFolio.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -244,6 +251,9 @@
     <Content Include="Views\Offer\Add.cshtml" />
     <Content Include="Views\Language\Add.cshtml" />
     <Content Include="Views\Company\Edit.cshtml" />
+    <Content Include="Views\Developer\Add.cshtml" />
+    <Content Include="Views\Developer\Edit.cshtml" />
+    <Content Include="Views\WorkExeprience\_PartialViewWorkExeprience.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -256,8 +266,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508081601019_setMigrationByBilel.resx">
-      <DependentUpon>201508081601019_setMigrationByBilel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508091958246_MigrationGo.resx">
+      <DependentUpon>201508091958246_MigrationGo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508092009410_MigrationGoGo.resx">
+      <DependentUpon>201508092009410_MigrationGoGo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

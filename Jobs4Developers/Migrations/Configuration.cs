@@ -16,7 +16,7 @@ namespace Jobs4Developers.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Jobs4Developers.Models.ApplicationDbContext context)
+        protected override void Seed (Jobs4Developers.Models.ApplicationDbContext context)
         {
             AddSomeRoles(context);
         }

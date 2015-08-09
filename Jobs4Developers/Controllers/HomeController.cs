@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Jobs4Developers.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace Jobs4Developers.Controllers
 {
@@ -21,15 +25,19 @@ namespace Jobs4Developers.Controllers
             {
                 RedirectToAction("Login", "Account");
             }
-            return View("About");
+            using (var context = new ApplicationDbContext())
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = userManager.FindById(User.Identity.GetUserId());
+                var nameUSer = user.Email;
+                var userId = user.Id;
+
+            }
+            return View("PortFolio");
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
+       
 
        
     }

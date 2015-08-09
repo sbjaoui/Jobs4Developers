@@ -7,13 +7,13 @@ namespace Jobs4Developers.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class setMigrationByBilel : IMigrationMetadata
+    public sealed partial class MigrationGo : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(setMigrationByBilel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MigrationGo));
         
         string IMigrationMetadata.Id
         {
-            get { return "201508081601019_setMigrationByBilel"; }
+            get { return "201508091958246_MigrationGo"; }
         }
         
         string IMigrationMetadata.Source

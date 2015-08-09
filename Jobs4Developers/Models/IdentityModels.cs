@@ -30,9 +30,12 @@ namespace Jobs4Developers.Models
             return new ApplicationDbContext();
         }
 
-
+        public virtual DbSet<Company> Companys { get; set; }
+        public virtual DbSet<Developer> Developers { get; set; }
+        public virtual DbSet<Education> Educations { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<WorkExperience> WorkExperiences { get; set; }
+       
     }
 }

@@ -3,7 +3,7 @@ namespace Jobs4Developers.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class setMigrationByBilel : DbMigration
+    public partial class MigrationGo : DbMigration
     {
         public override void Up()
         {
@@ -49,10 +49,13 @@ namespace Jobs4Developers.Migrations
                         Adresse = c.String(),
                         UrlImg = c.String(),
                         UserId = c.String(maxLength: 128),
+                        WorkExperience_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
-                .Index(t => t.UserId);
+                .ForeignKey("dbo.WorkExperiences", t => t.WorkExperience_Id)
+                .Index(t => t.UserId)
+                .Index(t => t.WorkExperience_Id);
             
             CreateTable(
                 "dbo.Educations",
@@ -150,6 +153,21 @@ namespace Jobs4Developers.Migrations
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
+                "dbo.WorkExperiences",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        JobPosition = c.String(nullable: false, maxLength: 100),
+                        StartDate = c.DateTime(nullable: false),
+                        EndDate = c.DateTime(nullable: false),
+                        Description = c.String(nullable: false),
+                        UserId = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId);
+            
+            CreateTable(
                 "dbo.LanguageCompanies",
                 c => new
                     {
@@ -179,6 +197,8 @@ namespace Jobs4Developers.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.WorkExperiences", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Developers", "WorkExperience_Id", "dbo.WorkExperiences");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Companies", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Offers", "CompanyId", "dbo.Companies");
@@ -195,6 +215,7 @@ namespace Jobs4Developers.Migrations
             DropIndex("dbo.DeveloperLanguages", new[] { "Developer_Id" });
             DropIndex("dbo.LanguageCompanies", new[] { "Company_Id" });
             DropIndex("dbo.LanguageCompanies", new[] { "Language_Id" });
+            DropIndex("dbo.WorkExperiences", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Offers", new[] { "CompanyId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
@@ -203,10 +224,12 @@ namespace Jobs4Developers.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Educations", new[] { "Developer_Id" });
+            DropIndex("dbo.Developers", new[] { "WorkExperience_Id" });
             DropIndex("dbo.Developers", new[] { "UserId" });
             DropIndex("dbo.Companies", new[] { "UserId" });
             DropTable("dbo.DeveloperLanguages");
             DropTable("dbo.LanguageCompanies");
+            DropTable("dbo.WorkExperiences");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Offers");
             DropTable("dbo.AspNetUserRoles");

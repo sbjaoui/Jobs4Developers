@@ -1,0 +1,165 @@
+﻿@using Jobs4Developers.Models
+@model WorkExperience
+@{
+    ViewBag.Title = "add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Complete your registration.</h2>
+<hr />
+
+<div class="container">
+    @* A bit about me. *@
+    <div class="row ">
+        <div class="col-md-10 ">
+            <h2> A bit about me.</h2>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <img style="width:inherit; height:150px;" src="~/Content/Images/noUser.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a data-toggle="modal" data-target="#aBitAboutMe" href="">Add your name and your description</a>
+                            @*
+                                <button data-toggle="modal" data-target="#iddumodal" class="btn btn-primary">Open modal</button>
+                            *@
+                            <span id="myspan"></span>
+                            <div id="result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*A bit about me Modal*@
+<div class="modal fade" id="aBitAboutMe">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title">Add your name and your discription</h3>
+            </div>
+            @using (Html.BeginForm("addWorkExperience", "WorkExeprience", FormMethod.Post, new { id="myForm"}))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="modal-body ">
+
+                    <div class="form-horizontal col-md-offset-2">
+                        <div class="form-group ">
+                            @Html.LabelFor(model => model.JobPosition, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.JobPosition, new { @class = "form-control", placeholder = "Put your job position" })
+                                @Html.ValidationMessageFor(model => model.JobPosition)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StartDate, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control MyDate", placeholder = "Enter Drop-off date here..." })
+                                @Html.ValidationMessageFor(model => model.StartDate)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EndDate, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.EndDate, new { @class = "form-control MyDate", placeholder = "Enter Drop-off date here..." })
+                                @Html.ValidationMessageFor(model => model.EndDate)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="textArea" class="col-md-2 control-label">Discription</label>
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @cols = "80", @rows = "4", placeholder = "Put your discription" })
+                                @Html.ValidationMessageFor(model => model.EndDate)
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    @*
+                        <button id="test" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    *@
+                    <input id="test" type="submit" value="Ok" class="btn btn-primary"  />
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script>
+
+        window.onload = function () {
+            document.getElementById("test").addEventListener("click", function () {
+                document.getElementById("myspan").innerHTML = document.getElementById("txtBox").value;
+            });
+        };
+    </script>
+
+    <script>
+        $(function () {
+            $('.MyDate').datepicker();
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#myForm').on("submit", function (e) {
+                e.preventDefault();
+                alert('test');
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        $('#result').html(data);
+                    }
+
+                });
+            });
+        });
+    </script>
+
+
+}
+
+
+@section AddToHead{
+    <link type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+}
+
+
+
+
+
+
+
+
+@*
+
+
+*@

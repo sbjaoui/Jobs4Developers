@@ -10,10 +10,10 @@ namespace Jobs4Developers.Models.BLL
             Company company = null;
             if(db == null){
                 using(db= new ApplicationDbContext()){
-                    company = db.Companies.Include("Offers").Include("Languages").Where(h => h.Id == id).FirstOrDefault();
+                    company = db.Companys.Include("Offers").Include("Languages").Where(h => h.Id == id).FirstOrDefault();
                 }
             }else{
-                company = db.Companies.Include("Offers").Include("Languages").Where(h => h.Id == id).FirstOrDefault();
+                company = db.Companys.Include("Offers").Include("Languages").Where(h => h.Id == id).FirstOrDefault();
             }
             company.LanguagesIds = string.Join(",", company.Languages.Select(h => h.Id));
             return company;

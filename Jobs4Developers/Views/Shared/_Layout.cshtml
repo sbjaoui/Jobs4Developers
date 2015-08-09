@@ -4,9 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobs4Developers - @ViewBag.Title</title>
+    
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @RenderSection("AddToHead", required: false)
+   
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -17,7 +20,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/"><span class="glyphicon glyphicon-home" ></span>&nbsp;&nbsp;Home</a></li>
-                    <li><a href="/Home/About"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;MyProfil</a></li>
+                    <li><a href="/Developer/PortFolio"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;MyProfil</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -39,5 +42,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+
 </body>
 </html>
