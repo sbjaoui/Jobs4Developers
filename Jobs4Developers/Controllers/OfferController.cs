@@ -1,5 +1,7 @@
 ﻿using Jobs4Developers.Models;
 using Jobs4Developers.Models.BLL;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +25,19 @@ namespace Jobs4Developers.Controllers
         //model request binding 
         public ActionResult Add(Offer offer)
         {
-            offer.CompanyId = 2;
-            OfferManager.Add(offer);
-            ModelState.Clear();
+            Company MyCompany = null;
+
+            using (var context = new ApplicationDbContext())
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = userManager.FindById(User.Identity.GetUserId());
+                MyCompany = CompanyManager.GetByIdUser(user.Id);
+                offer.CompanyId = MyCompany.Id;
+                OfferManager.Add(offer);
+                ModelState.Clear();
+
+            }
 
             return RedirectToAction("Index", "Company");
         }

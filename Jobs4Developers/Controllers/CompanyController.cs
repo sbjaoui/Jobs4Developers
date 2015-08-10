@@ -41,6 +41,8 @@ namespace Jobs4Developers.Controllers
         {
 
             Company myCompany = new Company();
+            string email = null;
+            
             using (var context = new ApplicationDbContext())
             {
                 var userStore = new UserStore<ApplicationUser>(context);
@@ -51,13 +53,15 @@ namespace Jobs4Developers.Controllers
                 myCompany = CompanyManager.GetByIdUser(user.Id);
 
                 myCompany.UserId = user.Id;
-                ViewBag.EmailUser = user;
+                email = user.UserName;
             }
+                ViewBag.EmailUser = email;
+          
 
 
 
             ViewBag.ListOffres = OfferManager.getByIdCompany(myCompany.Id);
-
+            
             return View(myCompany);
         }
         public ActionResult Edit(int? id)

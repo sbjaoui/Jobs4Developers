@@ -168,9 +168,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508101528518_Migration1.cs" />
-    <Compile Include="Migrations\201508101528518_Migration1.Designer.cs">
-      <DependentUpon>201508101528518_Migration1.cs</DependentUpon>
+    <Compile Include="Migrations\201508101544486_go habs go.cs" />
+    <Compile Include="Migrations\201508101544486_go habs go.Designer.cs">
+      <DependentUpon>201508101544486_go habs go.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -251,6 +251,7 @@
     <Content Include="Views\Developer\Edit.cshtml" />
     <Content Include="Views\WorkExeprience\_PartialViewWorkExeprience.cshtml" />
     <Content Include="Views\WorkExeprience\_PartialViewEmpty.cshtml" />
+    <Content Include="Views\Company\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -263,8 +264,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508101528518_Migration1.resx">
-      <DependentUpon>201508101528518_Migration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508101544486_go habs go.resx">
+      <DependentUpon>201508101544486_go habs go.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

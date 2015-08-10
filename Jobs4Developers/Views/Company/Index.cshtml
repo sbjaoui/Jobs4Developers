@@ -3,40 +3,46 @@
 @{
     ViewBag.Title = "Index";
     ICollection<Offer> listOffres = ViewBag.ListOffres as ICollection<Offer>;
-    // string email = ViewBag.EmailUser;
+    string email = ViewBag.EmailUser as string;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
     @* A bit about me. *@
-    <div class="row ">
-        <div class="col-md-10 ">
+    <div class="row " >
+        <div class="col-md-12 ">
 
-            <h2>My Company</h2>
-            <hr />
             <div class="row">
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-12 ">
-                            <img style="width:inherit; height:150px;" src="~/Content/Images/noUser.jpg" />
+                <div class="col-md-9"><h2>My Company</h2></div>
+                <div class="col-md-3" style="padding-top:30px; padding-left:70px;">
+                    @Html.ActionLink("Edit My Profil", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Delete My Profil", "Delete", new { id = Model.Id })
+                </div>
+               
+            </div>
+            <hr />
+            </div>
+          
+            <div class="col-md-10 ">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <img style="width:inherit; height:150px;" src="~/Content/Images/noUser.jpg" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-8 ">
-                    <div class="row">
-                        <div class="col-md-12"> <b>@Model.Name</b>  </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">@Model.Description</div>
-                        <div class="col-md-12">@Model.Id</div>
-                        <div class="col-md-12">
-                            @Html.ActionLink("Edit My Profil", "Edit", new { id = Model.Id }) |
-                            @Html.ActionLink("Delete My Profil", "Delete", new { id = Model.Id })
+                    <div class="col-md-8 ">
+                        <div class="row">
+                            <div class="col-md-12"> <b>@Model.Name</b>  </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">@Model.Description</div>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-2" style="margin-top:5.8%;">
+        <div class="col-md-2" style="margin-top:2.8%;">
             <div class="row">
 
                 <b>Contact me</b>
@@ -44,7 +50,7 @@
             </div>
 
             <div class="row">
-                <span style="color:#B15315; margin:8px;">Email:</span><span></span>
+                <span style="color:#B15315; margin:8px;">Email:</span><span>@email</span>
             </div>
             <div class="row">
                 <span style="color:#B15315;margin:8px;">Cell:</span><span>@Model.PhoneNumber</span>
@@ -53,17 +59,17 @@
             <div class="row">
                 <span style="color:#B15315;margin:8px;">Adresse:</span><span>@Model.Adresse </span>
             </div>
+           
         </div>
-
     </div>
 
     @* Resume *@
     <div class="row ">
-        <div class="col-md-10 ">
+        <div class="col-md-10 " >
             @* Column1 *@
             <h2> Resume.</h2>
             <hr />
-            @* Professional info *@
+            @* Jobs Offer *@
             <div class="row" style="height:200px;">
 
                 <div class="col-md-4 ">
@@ -111,7 +117,7 @@ text-align: center; vertical-align: middle; line-height: 145px;">
                 </div>
             </div>
 
-            @* WORK EXPERIENCE *@
+            @* Languages*@
             <div class="row">
                 <div class="col-md-4 ">
                     <div class="row" style="vertical-align:central;">
@@ -202,6 +208,8 @@ text-align: center; vertical-align: middle; line-height: 145px;">
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
         </div>
 
 
