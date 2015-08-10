@@ -1,10 +1,24 @@
 ﻿@using Jobs4Developers.Models
 @model WorkExperience
 
-<div>
-@Html.LabelFor(model => model.JobPosition)
-@Html.LabelFor(model => model.StartDate)
-@Html.LabelFor(model => model.EndDate)
-@Html.LabelFor(model => model.Description)
-</div>
+@{
+    string _ednDate;
+    DateTime endDate = @Model.EndDate;
+    if (endDate.Year == DateTime.Now.Year) _ednDate = "Present";
+    else _ednDate = endDate.Year.ToString();    
+}
 
+
+<div class="row"> <div class="col-md-12"><b>@Model.JobPosition</b> </div></div>
+<div class="row">
+    <div class="col-md-12" style="color:#4A8D57;"><b>@Model.StartDate.Year - @_ednDate</b></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <span style="
+text-align: center; vertical-align: middle;">
+            @Model.Description
+        </span>
+    </div>
+</div>
+<hr />

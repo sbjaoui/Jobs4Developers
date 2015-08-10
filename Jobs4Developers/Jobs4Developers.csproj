@@ -254,6 +254,7 @@
     <Content Include="Views\Developer\Add.cshtml" />
     <Content Include="Views\Developer\Edit.cshtml" />
     <Content Include="Views\WorkExeprience\_PartialViewWorkExeprience.cshtml" />
+    <Content Include="Views\WorkExeprience\_PartialViewEmpty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

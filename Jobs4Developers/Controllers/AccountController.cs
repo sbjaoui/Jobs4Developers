@@ -70,7 +70,7 @@ namespace Jobs4Developers.Controllers
                 }
             }
 
-            // If we got this far, something failed, redisplay form
+           
             return View(model);
         }
 
@@ -113,7 +113,9 @@ namespace Jobs4Developers.Controllers
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
-                        return RedirectToAction("Index", "Home");
+
+                        if (model.idRoles == 1) return RedirectToAction("Index", "Company");
+                        if (model.idRoles == 2) return RedirectToAction("Add", "Home");
                     }
                     else
                     {

@@ -13,6 +13,7 @@ namespace Jobs4Developers.Controllers
         // GET: Company
         public ActionResult Index()
         {
+
             Company myCompany = CompanyManager.GetById(1);
             ViewBag.ListOffres = OfferManager.getByIdCompany(myCompany.Id);
             return View(myCompany);

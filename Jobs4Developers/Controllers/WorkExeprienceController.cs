@@ -21,6 +21,9 @@ namespace Jobs4Developers.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult addWorkExperience(WorkExperience workExeprience)
         {
+
+         workExeprience.UserId =  User.Identity.GetUserId();
+
             using (var context = new ApplicationDbContext())
             {
                 var userStore = new UserStore<ApplicationUser>(context);
@@ -34,10 +37,10 @@ namespace Jobs4Developers.Controllers
             {
                 WorkExperienceManager.Add(workExeprience);
                 ModelState.Clear();
+                return PartialView("_PartialViewWorkExeprience", workExeprience);
             }
+            return PartialView("_PartialViewEmpty", workExeprience);
            
-           //return View("../Developer/Add", workExeprience);
-            return PartialView("_PartialViewWorkExeprience", workExeprience);
            
         }
 
