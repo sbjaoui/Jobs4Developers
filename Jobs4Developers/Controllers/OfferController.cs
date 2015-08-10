@@ -10,9 +10,9 @@ namespace Jobs4Developers.Controllers
 {
     public class OfferController : Controller
     {
-        
 
-       
+
+
         public ActionResult Add()
         {
             return View();
@@ -23,7 +23,7 @@ namespace Jobs4Developers.Controllers
         //model request binding 
         public ActionResult Add(Offer offer)
         {
-            offer.CompanyId = 1;
+            offer.CompanyId = 2;
             OfferManager.Add(offer);
             ModelState.Clear();
 

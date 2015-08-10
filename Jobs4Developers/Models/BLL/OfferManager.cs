@@ -22,8 +22,8 @@ namespace Jobs4Developers.Models.BLL
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
 
-               ICollection<Offer>offers = db.Offers.Where(h => h.CompanyId == id).ToList();
-               return offers;
+                ICollection<Offer> offers = db.Offers.Where(h => h.CompanyId == id).ToList();
+                return offers;
             }
         }
 
