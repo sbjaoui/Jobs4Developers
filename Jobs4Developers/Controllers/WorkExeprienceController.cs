@@ -19,7 +19,7 @@ namespace Jobs4Developers.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult addWorkExperience(WorkExperience workExeprience)
+        public ActionResult addWorkExperience([Bind(Prefix = "Item1")] WorkExperience workExeprience)
         {
 
          workExeprience.UserId =  User.Identity.GetUserId();

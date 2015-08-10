@@ -114,8 +114,8 @@ namespace Jobs4Developers.Controllers
                     {
                         await SignInAsync(user, isPersistent: false);
 
-                        if (model.idRoles == 1) return RedirectToAction("Index", "Company");
-                        if (model.idRoles == 2) return RedirectToAction("Add", "Home");
+                        if (model.idRoles == 1) return RedirectToAction("Add", "Company");
+                        if (model.idRoles == 2) return RedirectToAction("Add", " Developer");
                     }
                     else
                     {
