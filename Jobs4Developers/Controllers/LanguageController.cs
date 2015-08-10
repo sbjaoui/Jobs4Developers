@@ -24,14 +24,6 @@ namespace Jobs4Developers.Controllers
         public ActionResult Add(Language language, int? idl)
         {
             Company MyCompany = null;
-            if (ModelState.IsValid)
-            {
-                LanguageManager.Add(language);
-                ModelState.Clear();
-                return RedirectToAction("Edit", "Company", new { id = MyCompany.Id });
-               
-            }
-          
             using (var context = new ApplicationDbContext())
             {
                 var userStore = new UserStore<ApplicationUser>(context);
@@ -40,6 +32,15 @@ namespace Jobs4Developers.Controllers
                 MyCompany = CompanyManager.GetByIdUser(user.Id);
 
             }
+            if (ModelState.IsValid)
+            {
+                LanguageManager.Add(language);
+                ModelState.Clear();
+                return RedirectToAction("Edit", "Company", new { id = MyCompany.Id });
+               
+            }
+          
+           
 
             return RedirectToAction("Add", "Language");
         }
